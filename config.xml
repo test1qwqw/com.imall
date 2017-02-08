@@ -3,8 +3,8 @@
   xmlns       = "http://www.w3.org/ns/widgets"
   xmlns:gap   = "http://phonegap.com/ns/1.0"
   id          = "com.imall"
-  version     = "16.11.16"
-  versionCode = "161116"
+  version     = "17.02.08"
+  versionCode = "170208"
 >
   <name>imall.com</name>
   <author
@@ -12,7 +12,7 @@
     email="info@imall.com">iMall.com
   </author>
   <description>imall.com</description>
-  <preference name="phonegap-version" value="cli-6.3.0"/>
+  <preference name="phonegap-version" value="cli-6.5.0"/>
   <preference name="fullscreen" value="true"/>
   <preference name="permissions" value="none"/>
 
