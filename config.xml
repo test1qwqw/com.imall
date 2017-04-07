@@ -3,8 +3,8 @@
   xmlns       = "http://www.w3.org/ns/widgets"
   xmlns:gap   = "http://phonegap.com/ns/1.0"
   id          = "com.imall"
-  version     = "17.04.06"
-  versionCode = "170406"
+  version     = "17.04.07"
+  versionCode = "170407"
 >
   <name>imall.com</name>
   <author
