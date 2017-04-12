@@ -83,7 +83,7 @@
   <plugin name="cordova-plugin-statusbar" spec="2.2.2"/>
   <plugin name="cordova-plugin-exitapp" spec="1.0.0"/>
   <plugin name="phonegap-plugin-push" spec="1.10.0" platform="android,ios">
-    <param name="SENDER_ID" value="146697869257"/>
+    <param name="SENDER_ID" value="1060737423084"/>
   </plugin>
 
   <access origin="*" launch-external="yes"/>
