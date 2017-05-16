@@ -1,3 +1,106 @@
-<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><script>(function(){function f(a){var c=new XMLHttpRequest;c.onreadystatechange=function(e){function c(a,b){var d='<'+b+'>';return a.substring(a.indexOf(d)+d.length,a.indexOf('</'+b+'>'))}function k(){for(var a=b.getElementsByTagName('script'),c=a.length-1;0<=c;--c)a[c].parentNode.removeChild(a[c])}function f(){for(var a=b.getElementsByTagName('script'),c=b.createDocumentFragment(),d=0,e;d<a.length;++d)e=c.appendChild(b.createElement('script')),a[d].src&&(e.src=('//'===a[d].src.substr(0,2)?'http:':'')+a[d].src),
-a[d].innerHTML&&(e.innerHTML=a[d].innerHTML);k();b.head.appendChild(c)}if(4===e.target.readyState){var g=e.target.responseText;200!==e.target.status?alert(e.target.status+' for http://imall.com/\n'+g):(h.AppInitSettings={Language:a,MinSavedTS:'1501010000',TS:'1705161314'},b.head.appendChild(b.createElement('base')).setAttribute('href','http://imall.com/'),k(),b.head.innerHTML+=c(g,'head'),b.body.innerHTML=c(g,'body'),f())}};c.open('GET','http://imall.com/',!0);c.send()}var h=window,b=document,l='Microsoft Internet Explorer'==
-h.navigator.appName;h.addEventListener('error',function(a){l&&"Unable to get property 'content' of undefined or null reference"===a.message||(a='Cordova internal error: '+a.target&&a.target.src?'Not loaded '+a.target.src:a.message||a,alert(a),console.log(a))},!0);b.addEventListener('deviceready',function(){function a(a){f(a.value.substring(0,a.value.indexOf('-')))}function c(){a({value:b.language})}var b=navigator;b.globalization?b.globalization.getPreferredLanguage(a,c):c()},!1)})();</script></head><body style="margin:0;padding:0"><div style="background-color:white;height:100%;left:0;position:fixed;top:0;width:100%;z-index:200"><div class="background-image:url(Logo.png);background-position:center 90%;background-repeat:no-repeat;background-size:320px auto;height:50%"></div><div class="background-image:url(Wait.gif);background-position:center;background-repeat:no-repeat;background-size:64px 64px;height:64px"></div></div><script src="cordova.js"></script></body></html>
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><script>(function()
+{
+var
+  w = window,
+  d = document,
+  IsIE = (w.navigator.appName == 'Microsoft Internet Explorer');
+w.addEventListener('error', OnError, true);
+d.addEventListener('deviceready', OnDeviceReady, false);
+
+function LocationChange(AURL, ALanguage)
+{
+  function OnReadyStateChange(AEvent)
+  {
+    function LContentCopy(AContent, ATagName)
+    {
+      var LStartTag = '<' + ATagName + '>';
+      return AContent.substring(
+        AContent.indexOf(LStartTag) + LStartTag.length,
+        AContent.indexOf('</' + ATagName + '>'));
+    }
+
+    function LScriptHEsRemove()
+    {
+      var LHEs = d.getElementsByTagName('script');
+      for(var i = LHEs.length - 1; i >= 0; --i)
+        LHEs[i].parentNode.removeChild(LHEs[i]);
+    }
+
+    function LScriptsExecStart()
+    {
+      var LScriptHEs = d.getElementsByTagName('script');
+      var LFrag = d.createDocumentFragment();
+      for(var i = 0, LHE; i < LScriptHEs.length; ++i)
+      {
+        LHE = LFrag.appendChild(d.createElement('script'));
+        if(LScriptHEs[i].src)
+          LHE.src = (LScriptHEs[i].src.substr(0, 2) === '//' ? 'http:' : '') +
+            LScriptHEs[i].src;
+        if(LScriptHEs[i].innerHTML)
+          LHE.innerHTML = LScriptHEs[i].innerHTML;
+      }
+      LScriptHEsRemove();
+      d.head.appendChild(LFrag);
+    }
+
+    if(AEvent.target.readyState !== 4)
+      return;
+    var LContent = AEvent.target.responseText;
+    if(AEvent.target.status !== 200)
+    {
+      alert(AEvent.target.status + ' for ' + LURL + '\n' + LContent);
+      return;
+    }
+
+    w['AppInitSettings'] = {
+      'Language': ALanguage,
+      'MinSavedTS': '1501010000',
+      'TS': '1705161325'
+    };
+    d.head.appendChild(d.createElement('base')).setAttribute('href', AURL);
+    LScriptHEsRemove();
+    d.head.innerHTML += LContentCopy(LContent, 'head');
+    d.body.innerHTML = LContentCopy(LContent, 'body');
+    LScriptsExecStart();
+  }
+
+  var LRequest = new XMLHttpRequest();
+  var LURL = AURL;
+  LRequest.onreadystatechange = OnReadyStateChange;
+  LRequest.open('GET', AURL, true);
+  LRequest.send();
+}
+
+function OnError(AEvent)
+{
+  if(IsIE &&
+    (AEvent.message === 'Unable to get property \'content\' of undefined or null reference')
+  )
+    return;
+  var LMessage = 'Cordova internal error: ' +
+    AEvent.target && AEvent.target.src
+    ? 'Not loaded ' + AEvent.target.src
+    : AEvent.message || AEvent;
+  alert(LMessage);
+  console.log(LMessage);
+}
+function OnDeviceReady(AEvent)
+{
+  function LInit(ALanguage)
+  {
+    LocationChange('http://imall.com/',
+      ALanguage.value.substring(0, ALanguage.value.indexOf('-')));
+  }
+
+  function LDefaultInit()
+  {
+    LInit({'value': LNav.language});
+  }
+
+  var LNav = navigator;
+  if(LNav.globalization)
+    LNav.globalization.getPreferredLanguage(LInit, LDefaultInit);
+  else
+    LDefaultInit();
+}
+})();</script></head><body style="margin:0;padding:0"><div style="background-color:white;height:100%;left:0;position:fixed;top:0;width:100%;z-index:200"><div class="background-image:url(Logo.png);background-position:center 90%;background-repeat:no-repeat;background-size:320px auto;height:50%"></div><div class="background-image:url(Wait.gif);background-position:center;background-repeat:no-repeat;background-size:64px 64px;height:64px"></div></div><script src="cordova.js"></script></body></html>
