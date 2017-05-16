@@ -3,8 +3,8 @@
   xmlns       = "http://www.w3.org/ns/widgets"
   xmlns:gap   = "http://phonegap.com/ns/1.0"
   id          = "com.imall"
-  version     = "17.04.12"
-  versionCode = "170412"
+  version     = "17.05.16"
+  versionCode = "170516"
 >
   <name>imall.com</name>
   <author
@@ -83,7 +83,7 @@
   <plugin name="cordova-plugin-statusbar" spec="2.2.2"/>
   <plugin name="cordova-plugin-exitapp" spec="1.0.0"/>
   <plugin name="phonegap-plugin-push" spec="1.10.1" platform="android,ios">
-    <param name="SENDER_ID" value="1060737423084"/>
+    <param name="SENDER_ID" value="146697869257"/>
   </plugin>
 
   <access origin="*" launch-external="yes"/>
