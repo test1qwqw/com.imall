@@ -52,18 +52,21 @@ function LocationChange(AURL, ALanguage)
       return;
     }
 
+    Log('LocationChange: parse started');
     w['AppInitSettings'] = {
       'Language': ALanguage,
       'MinSavedTS': '1501010000',
-      'TS': '1705161325'
+      'TS': '1705161337'
     };
     d.head.appendChild(d.createElement('base')).setAttribute('href', AURL);
     LScriptHEsRemove();
     d.head.innerHTML += LContentCopy(LContent, 'head');
     d.body.innerHTML = LContentCopy(LContent, 'body');
     LScriptsExecStart();
+    Log('LocationChange: parse finished');
   }
 
+  Log('LocationChange: ' + AURL);
   var LRequest = new XMLHttpRequest();
   var LURL = AURL;
   LRequest.onreadystatechange = OnReadyStateChange;
@@ -82,7 +85,32 @@ function OnError(AEvent)
     ? 'Not loaded ' + AEvent.target.src
     : AEvent.message || AEvent;
   alert(LMessage);
-  console.log(LMessage);
+  Log(LMessage);
+}
+
+function Log(AMessage)
+{
+  console.log(AMessage);
+  var LFragHE = document.createDocumentFragment();
+  if(!Log.HE)
+  {
+    Log.HE = document.body.appendChild(document.createElement('table'));
+    Log.HE.border = 1;
+    Log.HE.style.position = 'fixed';
+    Log.HE.style.left = 0;
+    Log.HE.style.top = '54px';
+    Log.HE.style.width = '50%';
+    Log.HE.style.backgroundColor = 'white';
+    var LTR = LFragHE.appendChild(document.createElement('tr'));
+    LTR.appendChild(document.createElement('th')).innerText = 'Time';
+    LTR.appendChild(document.createElement('th')).innerText = 'Message';
+  }
+  var LTR = LFragHE.appendChild(document.createElement('tr'));
+  LTR.appendChild(document.createElement('td')).innerText = (new Date).toTimeString().substr(0, 8);
+  var LTDMessage = LTR.appendChild(document.createElement('td'));
+  LTDMessage.innerHTML = AMessage;
+  LTDMessage.style['word-break'] = 'break-all';
+  Log.HE.appendChild(LFragHE);
 }
 function OnDeviceReady(AEvent)
 {
@@ -97,6 +125,7 @@ function OnDeviceReady(AEvent)
     LInit({'value': LNav.language});
   }
 
+  Log('OnDeviceReady');
   var LNav = navigator;
   if(LNav.globalization)
     LNav.globalization.getPreferredLanguage(LInit, LDefaultInit);
