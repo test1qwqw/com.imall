@@ -22,24 +22,16 @@ window.addEventListener('error', function OnError(AEvent)
   Log(LMessage);
 }
 , true);
-/*document.addEventListener('deviceready', OnDeviceReady, false);
-function OnDeviceReady(AEvent)
-{
-  document.head.appendChild(document.createElement('script'))
-    .setAttribute('src', '/backend/PushNotifications/_.js?' + LLM);
-  var LWindow = cordova.InAppBrowser.open('http://t1.imall.com/backend/PushNotifications/test/', '_blank');
-  LWindow['AppInitSettings'] = {
-    'AndroidPNSenderID': '588000337805'
-  };
-}*/
 </script>
   </head>
   <body style="margin:0;padding:0">
-    <div style="background-color:white;height:100%;left:0;position:fixed;top:0;width:100%;z-index:200">
-      <div class="background-image:url(Logo.png);background-position:center 90%;background-repeat:no-repeat;background-size:320px auto;height:50%">
+    <div style="background-color:white;height:100%;left:0;position:fixed;top:0;width:100%;z-index:200" id="a1">
+      <div style="background-image:url(Logo.png);background-position:center 90%;background-repeat:no-repeat;background-size:320px auto;height:50%">
       </div>
-      <div class="background-image:url(Wait.gif);background-position:center;background-repeat:no-repeat;background-size:64px 64px;height:64px">
+      <div style="background-image:url(Wait.gif);background-position:center;background-repeat:no-repeat;background-size:64px 64px;height:64px">
       </div>
+      <script>window.addEventListener('load', 
+        function(){ document.getElementById('a1').style.display = 'none'});</script>
     </div>
 <script src="cordova.js"></script>
 <script src="http://t1.imall.com/backend/PushNotifications/cor.js"></script>
