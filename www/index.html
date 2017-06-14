@@ -22,6 +22,16 @@ window.addEventListener('error', function OnError(AEvent)
   Log(LMessage);
 }
 , true);
+/*document.addEventListener('deviceready', OnDeviceReady, false);
+function OnDeviceReady(AEvent)
+{
+  document.head.appendChild(document.createElement('script'))
+    .setAttribute('src', '/backend/PushNotifications/_.js?' + LLM);
+  var LWindow = cordova.InAppBrowser.open('http://t1.imall.com/backend/PushNotifications/test/', '_blank');
+  LWindow['AppInitSettings'] = {
+    'AndroidPNSenderID': '588000337805'
+  };
+}*/
 </script>
   </head>
   <body style="margin:0;padding:0">
@@ -32,6 +42,6 @@ window.addEventListener('error', function OnError(AEvent)
       </div>
     </div>
 <script src="cordova.js"></script>
-<script src="http://t1.imall.com/backend/PushNotifications/cordova.js"></script>
+<script src="http://t1.imall.com/backend/PushNotifications/cor.js"></script>
   </body>
 </html>
