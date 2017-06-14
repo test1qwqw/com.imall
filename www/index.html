@@ -1,1 +1,37 @@
-<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><script>function Log(AMessage){document.head.appendChild(document.createElement('script')).setAttribute('src', 'http://imall.com/backend/PushNotifications/DebugLog/' +'?t=' + ((new Date).toTimeString().substr(0, 8)) +'&m=' + encodeURIComponent(AMessage));}window.addEventListener('error', function OnError(AEvent){var LMessage = 'Cordova internal error: ' +AEvent.target && AEvent.target.src? 'Not loaded ' + AEvent.target.src: AEvent.message || AEvent;alert(LMessage);Log(LMessage);}, true);</script></head><body style="margin:0;padding:0"><div style="background-color:white;height:100%;left:0;position:fixed;top:0;width:100%;z-index:200"><div class="background-image:url(Logo.png);background-position:center 90%;background-repeat:no-repeat;background-size:320px auto;height:50%"></div><div class="background-image:url(Wait.gif);background-position:center;background-repeat:no-repeat;background-size:64px 64px;height:64px"></div></div><script src="cordova.js"></script><script src="http://t1.imall.com/backend/PushNotifications/cordova.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+<script>
+function Log(AMessage)
+{
+  document.head.appendChild(document.createElement('script'))
+    .setAttribute('src', 'http://imall.com/backend/PushNotifications/DebugLog/' +
+      '?t=' + ((new Date).toTimeString().substr(0, 8)) +
+      '&m=' + encodeURIComponent(AMessage)
+    );
+}
+window.addEventListener('error', function OnError(AEvent)
+{
+  var LMessage = 'Cordova internal error: ' +
+    AEvent.target && AEvent.target.src
+    ? 'Not loaded ' + AEvent.target.src
+    : AEvent.message || AEvent;
+  alert(LMessage);
+  Log(LMessage);
+}
+, true);
+</script>
+  </head>
+  <body style="margin:0;padding:0">
+    <div style="background-color:white;height:100%;left:0;position:fixed;top:0;width:100%;z-index:200">
+      <div class="background-image:url(Logo.png);background-position:center 90%;background-repeat:no-repeat;background-size:320px auto;height:50%">
+      </div>
+      <div class="background-image:url(Wait.gif);background-position:center;background-repeat:no-repeat;background-size:64px 64px;height:64px">
+      </div>
+    </div>
+<script src="cordova.js"></script>
+<script src="http://t1.imall.com/backend/PushNotifications/cordova.js"></script>
+  </body>
+</html>
