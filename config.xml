@@ -19,7 +19,7 @@
   <icon src="www/icon.png"/>
 
   <platform name="android">
-    <splash src="logo.png"/>
+    <splash src="www/logo.png"/>
   </platform>
 
   <!--platform name="ios">
